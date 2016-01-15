@@ -31,9 +31,9 @@ return [
 
 ### Cara penggunaaan
 
-1.Menampilkan Gambar low resolusi
+Menampilkan Gambar low resolusi
   
-  ```sh
+```sh
 
 <?php
 
@@ -44,9 +44,10 @@ foreach(IG::lowResolution() as $row)
 
 ?>
 ```
-2. Menampilkan Gambar standar resolusi
 
- ```sh
+Menampilkan Gambar standar resolusi
+
+```sh
 
 <?php
 
@@ -60,8 +61,10 @@ foreach(IG::standardResolution() as $row)
 
 ```
 
-3.Menampilkan Informasi User
+Menampilkan Informasi User
+
 ```sh
+
 <?php
 
 echo IG::username();
@@ -79,6 +82,7 @@ echo IG::countFollowers();
 echo IG::countFollowing();
 
 ?>
+
 
 ```
 
