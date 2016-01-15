@@ -31,7 +31,7 @@ return [
 
 ### Cara penggunaaan
 
-  - Menampilkan Gambar low resolusi
+1.Menampilkan Gambar low resolusi
   
   ```sh
 
@@ -41,31 +41,49 @@ foreach(IG::lowResolution() as $row)
 {
 	echo "<img src = '".$row."' />";
 }
+
+?>
 ```
-- Menampilkan Gambar standar resolusi
+2. Menampilkan Gambar standar resolusi
 
  ```sh
+
 <?php
+
 foreach(IG::standardResolution() as $row)
+
 {
 	echo "<img src = '".$row."' />";
 }
 
+?>
+
 ```
-- Menampilkan Informasi User
+
+3.Menampilkan Informasi User
 ```sh
 <?php
+
 echo IG::username();
+
 echo IG::bio(); 
+
 echo IG::website();
+
 echo IG::pic();
+
 echo IG::fullName();
+
 echo IG::countFollowers();
+
 echo IG::countFollowing();
+
+?>
 
 ```
 
 ## License
-MIT
+
+### MIT
 
 **ENJOY !!!**
