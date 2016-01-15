@@ -32,20 +32,25 @@ return [
 ### Cara penggunaaan
 
   - Menampilkan Gambar low resolusi
+  
   ```sh
+
 <?php
+
 foreach(IG::lowResolution() as $row)
 {
 	echo "<img src = '".$row."' />";
 }
 ```
 - Menampilkan Gambar standar resolusi
+
  ```sh
 <?php
 foreach(IG::standardResolution() as $row)
 {
 	echo "<img src = '".$row."' />";
 }
+
 ```
 - Menampilkan Informasi User
 ```sh
@@ -57,6 +62,7 @@ echo IG::pic();
 echo IG::fullName();
 echo IG::countFollowers();
 echo IG::countFollowing();
+
 ```
 
 ## License
