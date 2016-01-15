@@ -1,0 +1,13 @@
+{
+    "name": "muhamadrezaar/instagram",
+    "description": "Laravel 5 Instagram Package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhamad Reza Abdul Rohim",
+            "email": "reza.wikrama3@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
