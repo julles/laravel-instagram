@@ -1,8 +1,8 @@
 <?php
 
-	// configurations 
+	// masukan user id dan akses token instagram yang akan manage
 
 	return [
 		'userId' => 'your-user-id',
-		'accessToken' => 'yout-access-token', 
+		'accessToken' => 'your-access-token', 
 	];
