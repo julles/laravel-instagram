@@ -7,6 +7,12 @@ Tambahkan Package pada composer.json
 ```sh
 composer require muhamadrezaar/instagram
 ```
+
+Publish config
+```sh
+php artisan vendor:publish
+```
+
 setelah package terdownload , register  provider  dan facade nya
 
 Provider :
@@ -19,7 +25,7 @@ Facade :
 ```
 ### Konfigurasi
 
-Buka file vendor/muhamadrezaar/instagram/InstagramConfig.php
+Buka file config/InstagramConfig.php
 masukan user id dan access token instagram anda
 contoh :
 ```sh
