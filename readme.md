@@ -92,8 +92,46 @@ echo IG::countFollowing();
 
 ```
 
+Menampilkan Data Followers
+
+```sh
+
+<?php
+
+foreach(IG::displayFollowers() as $row)
+
+{
+	echo $row['full_name'];
+	echo $row['profile_picture'];
+	echo $row['username'];
+	echo $row['id'];
+}
+
+?>
+
+```
+
+Menampilkan Data Following
+
+```sh
+
+<?php
+
+foreach(IG::displayFollowing() as $row)
+
+{
+	echo $row['full_name'];
+	echo $row['profile_picture'];
+	echo $row['username'];
+	echo $row['id'];
+}
+
+?>
+
+```
+
 ## License
 
-### MIT
+MIT
 
 **ENJOY !!!**
