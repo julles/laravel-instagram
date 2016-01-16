@@ -17,8 +17,15 @@ class InstagramServiceProvider extends ServiceProvider
 	{
 
 		// merge config
+		$configFile = config_path('InstagramConfig.php');
 
-		$this->mergeConfigFrom(__DIR__.'/InstagramConfig.php', 'config');
+		if(file_exists($configFile))
+		{
+			$this->mergeConfigFrom($configFile , 'config');
+		}else{
+			$this->mergeConfigFrom(__DIR__.'/InstagramConfig.php', 'config');
+		}
+		
 
 		//
 
