@@ -2,7 +2,18 @@
 
 class Instagram
 
-{
+{	public $userId;
+	
+	public $accessToken;
+
+	public function __construct()
+
+	{
+		$this->userId = config('config.userId');
+
+		$this->accessToken = config('config.accessToken');
+	}
+
 	public function getResultImage()
 
 	{
@@ -134,6 +145,32 @@ class Instagram
 
 	{
 		return $this->counts('follows');
+	}
+
+	public function get_contents($url)
+
+	{
+
+		try
+		{
+			$contents = file_get_contents($url);
+			
+			$result = json_decode($contents , true);
+
+			return $result['data'];
+		
+		}catch(\Exception $e){
+		
+			throw new \Exception("Access Token Atau User ID Salah , silahkan cek lagi!");
+		
+		}
+	}
+
+	public function displayFollowing()
+
+	{
+		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken;
+		return $this->get_contents($url);
 	}
 
 }
