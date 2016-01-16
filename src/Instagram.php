@@ -173,4 +173,11 @@ class Instagram
 		return $this->get_contents($url);
 	}
 
+	public function displayFollowers()
+
+	{
+		$url = 'https://api.instagram.com/v1/users/self/followed-by?access_token='.$this->accessToken;
+		return $this->get_contents($url);
+	}
+
 }
