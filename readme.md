@@ -130,6 +130,10 @@ foreach(IG::displayFollowing() as $row)
 
 ```
 
+Outout Menampilkan gambar low resolution di browser
+
+![alt tag](http://s15.postimg.org/n8nhl6r8r/low_resoulution.png)
+
 ## License
 
 MIT
