@@ -2,9 +2,11 @@
 
 class Instagram
 
-{	public $userId;
+{	
+
+	protected $userId;
 	
-	public $accessToken;
+	protected $accessToken;
 
 	public function __construct()
 
@@ -14,30 +16,31 @@ class Instagram
 		$this->accessToken = config('config.accessToken');
 	}
 
-	public function getResultImage()
+	public function getContents($url)
 
 	{
-	
-		$userId = config('config.userId');
 
-		$token = config('config.accessToken');
-		
-		$url = "https://api.instagram.com/v1/users/$userId/media/recent/?access_token=$token";
-
-		
 		try
 		{
 			$contents = file_get_contents($url);
 			
 			$result = json_decode($contents , true);
 
-			return $result;
+			return $result['data'];
 		
 		}catch(\Exception $e){
 		
 			throw new \Exception("Access Token Atau User ID Salah , silahkan cek lagi!");
 		
 		}
+	}
+
+	public function getResultImage()
+
+	{
+		$url = "https://api.instagram.com/v1/users/".$this->userId."/media/recent/?access_token=".$this->accessToken;
+
+		return $this->getContents($url);
 
 	}
 
@@ -47,7 +50,7 @@ class Instagram
 		
 		$arr = [];
 
-		foreach($this->getResultImage()['data'] as $row)
+		foreach($this->getResultImage() as $row)
 
 		{
 			$arr[] = $row['images'][$params]['url'];
@@ -71,26 +74,11 @@ class Instagram
 	public function getResultUser()
 
 	{
-		$userId = config('config.userId');
+		
+		$url = "https://api.instagram.com/v1/users/".$this->userId."/?access_token=".$this->accessToken;
 
-		$token = config('config.accessToken');
+		return $this->getContents($url);
 		
-		$url = "https://api.instagram.com/v1/users/$userId/?access_token=$token";
-
-		
-		try
-		{
-			$contents = file_get_contents($url);
-			
-			$result = json_decode($contents , true);
-
-			return $result['data'];
-		
-		}catch(\Exception $e){
-		
-			throw new \Exception("Access Token Atau User ID Salah , silahkan cek lagi!");
-		
-		}
 	}
 
 	public function profile($param)
@@ -147,37 +135,20 @@ class Instagram
 		return $this->counts('follows');
 	}
 
-	public function get_contents($url)
-
-	{
-
-		try
-		{
-			$contents = file_get_contents($url);
-			
-			$result = json_decode($contents , true);
-
-			return $result['data'];
-		
-		}catch(\Exception $e){
-		
-			throw new \Exception("Access Token Atau User ID Salah , silahkan cek lagi!");
-		
-		}
-	}
+	
 
 	public function displayFollowing()
 
 	{
 		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken;
-		return $this->get_contents($url);
+		return $this->getContents($url);
 	}
 
 	public function displayFollowers()
 
 	{
 		$url = 'https://api.instagram.com/v1/users/self/followed-by?access_token='.$this->accessToken;
-		return $this->get_contents($url);
+		return $this->getContents($url);
 	}
 
 }
