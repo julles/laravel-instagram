@@ -173,7 +173,7 @@ class Instagram
 
 	{
 		$url = "https://api.instagram.com/oauth/authorize/?client_id=".$this->clientId."&redirect_uri=".$this->redirectUri."&response_type=code";
-		return redirect($url);
+		return $url;
 	}
 
 	public function curlAuth($code)
