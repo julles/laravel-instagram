@@ -61,6 +61,12 @@ foreach(IG::lowResolution() as $row)
 
 ?>
 ```
+Contoh Output Menampilkan gambar low resolution di browser
+
+![alt tag](http://s15.postimg.org/n8nhl6r8r/low_resoulution.png)
+
+
+
 
 Menampilkan Gambar standar resolusi
 
@@ -170,9 +176,7 @@ print_r($ig);
 
 semua informasi user yang login bisa di dapatkan :).
 
-Contoh Output Menampilkan gambar low resolution di browser
 
-![alt tag](http://s15.postimg.org/n8nhl6r8r/low_resoulution.png)
 
 ## Ada Pertanyaan ?
 
