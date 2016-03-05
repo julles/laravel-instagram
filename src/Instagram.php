@@ -57,7 +57,7 @@ class Instagram
 		return $this->setContents($url)['data'];
 	}
 
-	public function getResultImage($count="")
+	public function getResultImage($count="", $max_id = "")
 
 	{
 		if(!empty($count))
@@ -67,23 +67,26 @@ class Instagram
 			$count = "";
 		}
 
-		$url = "https://api.instagram.com/v1/users/".$this->userId."/media/recent/?access_token=".$this->accessToken.$count;
+		$url = "https://api.instagram.com/v1/users/".$this->userId."/media/recent/?access_token=".$this->accessToken.$count."&max_id=".$max_id;
 
 		return $this->getContents($url);
 
 	}
 
-	public function getImage($params = "",$count="")
+	public function getImage($params = "", $count="")
 
 	{
 		
 		$arr = [];
-
-		foreach($this->getResultImage($count) as $row)
-
-		{
-			$arr[] = $row['images'][$params]['url'];
-		}
+		$id = "";
+		do {
+			$max_id = $id;
+			foreach($this->getResultImage($count, $max_id) as $row)
+			{
+				$arr[] = $row['images'][$params]['url'];
+				$id = $row['id'];
+			}
+		} while($max_id !== $id);
 
 		return $arr;
 	}
