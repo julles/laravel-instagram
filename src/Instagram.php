@@ -34,7 +34,7 @@ class Instagram
 		$this->redirectUri = config('config.redirectUri');
 	}
 
-	public function getContents($url)
+	public function setContents($url)
 
 	{
 
@@ -44,8 +44,7 @@ class Instagram
 			
 			$result = json_decode($contents , true);
 
-			return $result['data'];
-		
+			return $result;
 		}catch(\Exception $e){
 		
 			throw new \Exception("Access Token Atau User ID Salah , silahkan cek lagi!");
@@ -53,22 +52,34 @@ class Instagram
 		}
 	}
 
-	public function getResultImage()
+	public function getContents($url)
+	{
+		return $this->setContents($url)['data'];
+	}
+
+	public function getResultImage($count="")
 
 	{
-		$url = "https://api.instagram.com/v1/users/".$this->userId."/media/recent/?access_token=".$this->accessToken;
+		if(!empty($count))
+		{
+			$count = "&count=".$count;
+		}else{
+			$count = "";
+		}
+
+		$url = "https://api.instagram.com/v1/users/".$this->userId."/media/recent/?access_token=".$this->accessToken.$count;
 
 		return $this->getContents($url);
 
 	}
 
-	public function getImage($params = "")
+	public function getImage($params = "",$count="")
 
 	{
 		
 		$arr = [];
 
-		foreach($this->getResultImage() as $row)
+		foreach($this->getResultImage($count) as $row)
 
 		{
 			$arr[] = $row['images'][$params]['url'];
@@ -77,16 +88,16 @@ class Instagram
 		return $arr;
 	}
 
-	public function lowResolution()
+	public function lowResolution($count = "")
 
 	{
-		return $this->getImage('low_resolution');
+		return $this->getImage('low_resolution',$count);
 	}
 
-	public function standardResolution()
+	public function standardResolution($count="")
 
 	{
-		return $this->getImage('standard_resolution');
+		return $this->getImage('standard_resolution',$count);
 	}
 
 	public function getResultUser()
