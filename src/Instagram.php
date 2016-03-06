@@ -142,6 +142,12 @@ class Instagram
 		return $this->onlyImage('standard_resolution',$count);
 	}
 
+	public function thumbnail($count="")
+
+	{
+		return $this->onlyImage('thumbnail',$count);
+	}
+
 	public function getResultUser()
 
 	{
@@ -211,7 +217,7 @@ class Instagram
 	public function displayFollowing()
 
 	{
-		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken;
+		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken.'&count=12';
 		return $this->getContents($url);
 	}
 
