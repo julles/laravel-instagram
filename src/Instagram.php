@@ -217,7 +217,7 @@ class Instagram
 	public function displayFollowing()
 
 	{
-		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken.'&count=12';
+		$url = 'https://api.instagram.com/v1/users/self/follows?access_token='.$this->accessToken;
 		return $this->getContents($url);
 	}
 
