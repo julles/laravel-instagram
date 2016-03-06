@@ -81,12 +81,14 @@ class Instagram
 		$id = "";
 		do {
 			$max_id = $id;
+			$counter = 0;
 			foreach($this->getResultImage($count, $max_id) as $row)
 			{
+				$counter++;
 				$arr[] = $row['images'][$params]['url'];
 				$id = $row['id'];
 			}
-		} while($max_id !== $id);
+		} while($count > 0 ? $count != $counter  : $max_id !== $id);
 
 		return $arr;
 	}
