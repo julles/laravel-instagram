@@ -73,7 +73,44 @@ class Instagram
 
 	}
 
-	public function getImage($params = "", $count="")
+
+	/**
+	 *  Helper untuk menampilkan selain image url (Custom)
+	 *  Example : 
+	 *  
+	 *  foreach(IG::images() as $row)
+	 *	{
+	 *		echo "<img src = '".$row['images']['standard_resolution']['url']."' /><br/>";
+	 *		echo $row['caption']['text'].'<br/>';
+	 *	}
+	 */
+
+	public function images($count="")
+	{
+		$arr = [];
+		$id = "";
+		do {
+			$max_id = $id;
+			$counter = 0;
+			foreach($this->getResultImage($count, $max_id) as $row)
+			{
+				$counter++;
+				$arr[] = $row;
+				$id = $row['id'];
+			}
+		} while($count > 0 ? $count != $counter  : $max_id !== $id);
+
+		return $arr;
+	}
+
+	/**
+	 * 
+	 * onlyImage khusus menangani image url saja.
+	 *  
+	 */
+
+
+	public function onlyImage($params = "", $count="") 
 
 	{
 		
@@ -96,13 +133,13 @@ class Instagram
 	public function lowResolution($count = "")
 
 	{
-		return $this->getImage('low_resolution',$count);
+		return $this->onlyImage('low_resolution',$count);
 	}
 
 	public function standardResolution($count="")
 
 	{
-		return $this->getImage('standard_resolution',$count);
+		return $this->onlyImage('standard_resolution',$count);
 	}
 
 	public function getResultUser()
