@@ -1,4 +1,10 @@
 # Laravel 5 Instagram Packages
+
+[![Total Downloads](https://poser.pugx.org/muhamadrezaar/instagram/d/total.svg)](https://packagist.org/packages/muhamadrezaar/instagram)
+[![Latest Stable Version](https://poser.pugx.org/muhamadrezaar/instagram/v/stable.svg)](https://packagist.org/packages/muhamadrezaar/instagram/v/stable.svg)
+[![License](https://poser.pugx.org/muhamadrezaar/instagram/license.svg)](https://packagist.org/packages/muhamadrezaar/instagram)
+
+
 Package Instagram untuk Laravel 5
 
 ### Installasi
