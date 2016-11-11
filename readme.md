@@ -69,7 +69,7 @@ foreach(IG::lowResolution() as $row)
 ```
 Contoh Output Menampilkan gambar low resolution di browser
 
-![alt tag](http://s15.postimg.org/n8nhl6r8r/low_resoulution.png)
+![alt tag](https://s17.postimg.org/4velafbjz/instagram.png)
 
 
 
@@ -190,6 +190,6 @@ email aja ke : reza.wikrama3@gmail.com
 
 ## License
 
-MIT
+https://reza.mit-license.org/
 
 **ENJOY !!!**
